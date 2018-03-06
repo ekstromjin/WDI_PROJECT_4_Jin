@@ -119,8 +119,10 @@ class SpotsShow extends React.Component {
                 <h3 className="bird-item-name">{ this.state.spot.bird.name }</h3>
                 {/*<h5 className="bird-item-byuser">by {this.state.spot.user.username}</h5>*/}
                 <h5 className="bird-item-accessory row m-0 mb-3">
-                  <span className="col-md-6 p-0">by {this.state.spot.username}</span>
-                  <span className="col-md-6 p-0 bird-item-date"><FontAwesome name='calendar' /> <Moment format="DD/MM/YYYY">{this.state.spot.created_at}</Moment></span>
+                  <span className="col-md-12 p-0">by {this.state.spot.username}</span>
+                </h5>
+                <h5 className="bird-item-accessory row m-0 mb-3">
+                  <span className="col-md-12 p-0 bird-item-date"><FontAwesome name='calendar' /> <Moment format="DD/MM/YYYY">{this.state.spot.created_at}</Moment></span>
                 </h5>
                 <div className="bird-item-location">
                   <p>Latitude: { this.state.spot.location.lat }</p>

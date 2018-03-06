@@ -13,16 +13,30 @@ header {
   position: relative;
   margin-bottom: 30px;
 
-  nav {
+  nav.top-menu {
     position: absolute;
     top: 0;
     right: 0;
+
+    & > a {
+      margin-right: 15px;
+    }
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
   }
 
   hr {
     border: 0;
     height: 1px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  }
+
+  h1 {
+    @media screen and (max-width: 400px) {
+      font-size: 2.0rem;
+    }
   }
 }
 
@@ -176,7 +190,7 @@ main {
 
 .google-map {
   border: 1px solid #888;
-  padding-top: 54%;
+  padding-top: 46.5%;
   overflow: hidden;
 }
 
@@ -257,4 +271,71 @@ main {
   &-comment {
     border-bottom: 1px solid #ccc;
   }
+}
+
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  right: 36px;
+  top: 36px;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }  
+}
+
+.bm-menu-wrap, .bm-overlay {
+  top: 0px;
+  left: 0;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }  
+}
+ 
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: lightgreen;
+}
+ 
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+ 
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+ 
+/* General sidebar styles */
+.bm-menu {
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+ 
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+ 
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+
+  li a.standard-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+ 
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
 }

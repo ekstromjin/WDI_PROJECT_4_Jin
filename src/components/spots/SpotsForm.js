@@ -18,7 +18,7 @@ function SpotsForm({ handleSubmit, handleChange, handleOnLocationChange, handleC
           <label>
             Select bird
           </label>
-          {birds && <select name="bird" onChange={handleChange} defaultValue={spot.bird}>
+          {birds && <select name="bird" onChange={handleChange} defaultValue={spot.bird} className="form-control">
             <option disabled value="">Please select a bird</option>
             {birds.map((bird, i) =>
               <option key={i} value={bird.id}>{bird.name}</option>
@@ -58,7 +58,6 @@ function SpotsForm({ handleSubmit, handleChange, handleOnLocationChange, handleC
         <div className="form-group">
           <label htmlFor="location">Location</label>
           <Autocomplete
-            style={{width: '90%'}}
             onPlaceSelected={(place) => handleOnLocationChange(place)  }
             types={[]}
             className="form-control"
@@ -71,7 +70,7 @@ function SpotsForm({ handleSubmit, handleChange, handleOnLocationChange, handleC
         <div className="form-group">
           <label>Username</label>
           <br />
-          <input type="text" style={{width: '90%'}} id="username" name="username" className="form-control" required onChange={handleChangeUsername} placeholder="" />
+          <input type="text" id="username" name="username" className="form-control" required onChange={handleChangeUsername} placeholder="" />
         </div>
 
         <div>

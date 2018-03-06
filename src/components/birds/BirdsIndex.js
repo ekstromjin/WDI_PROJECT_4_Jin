@@ -111,7 +111,7 @@ class BirdsIndex extends React.Component {
 
     return (
       <div>
-        <div className="row page-banner">
+        <div className="row page-banner mb-4">
           <div className="col-md-8">
             <Link className="main-button filter-link" to="#" onClick={this.handleClickFilterByColor}>Filter by color
               <div className={"filter-wrapper " + (this.state.showFilterColor ? 'show' : 'hide' )}>
