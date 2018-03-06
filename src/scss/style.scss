@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css?family=Krona+One');
+
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Krona One', sans-serif;
+  background: #fff;
+  color: #222;
+}
+
+header {
+  position: relative;
+  margin-bottom: 30px;
+
+  nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover, &:focus {
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+h1 {
+  margin: 20px 0 0 0;
+  padding: 0;
+  font-size: 40px;
+  letter-spacing: -5px;
+  font-family: 'Krona One', sans-serif;
+  line-height: 70px;
+  color: palegreen;
+}
+
+h2 {
+  margin: -18px 0 0 10px;
+  font-size: 20px;
+
+  span {
+    font-size: 22px;
+    font-weight: bold;
+  }
+}
+
+// hr {
+//   border: 0;
+//   height: 2px;
+//   background: #333;
+//   background-image: linear-gradient(to right, #fafafa, #eee, #fafafa);
+// }
+
+.fa-cutlery {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+  font-size: 60px;
+  color: #eee;
+  background: #fff;
+  padding: 0 30px;
+}
+
+.image-tile {
+  margin-bottom: 30px;
+
+  img {
+    width: 100%;
+    border-radius: 2px;
+    padding: 4px;
+    background: #fafafa;
+  }
+}
+
+button, .main-button, .standard-button {
+  margin-bottom: 20px;
+  padding: 3px 5px;
+  color: #fff;
+  border-radius: 2px;
+  font-weight: 600;
+  font-size: 18px;
+  outline: none;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+
+  i {
+    margin-right: 5px;
+  }
+
+  &.filter-link {
+    position: relative;
+    margin-right: 10px;
+
+    div.filter-wrapper {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      right: -50px;
+      z-index: 1;
+
+      & .Select {
+        div {
+
+        }
+
+        .Select-value, .Select-placeholder, .Select-menu-outer {
+          font-weight: normal;
+          color: #777;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+.show {
+    display: inline-block !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+.standard-button {
+  background: lightgreen;
+  border: 1px solid lighten(#ccc, 10%);
+
+  &:hover, &:focus {
+    color: #fff;
+    background: darken(#ccc, 10%);
+  }
+}
+
+.main-button {
+  background: lightgreen;
+
+  &:hover, &:focus {
+    color: #fff;
+    background: darken(#F31812, 10%);
+  }
+}
+
+.save-button {
+  background: #378B2E;
+  border: 1px solid lighten(#378B2E, 10%);
+
+  &:hover, &:focus {
+    color: #fff;
+    background: darken(#378B2E, 10%);
+  }
+}
+
+i {
+  margin-right: 5px;
+}
+
+main {
+  padding-top: 0px;
+}
+
+.google-map {
+  border: 1px solid #888;
+  padding-top: 54%;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 750px) {
+  .fa-cutlery {
+    display: none;
+  }
+}
+
+.notify-error {
+  font-size: 0.8rem;
+  padding: 6px 12px;
+  margin-left: 15px;
+}
+
+.shadowed {
+  -webkit-box-shadow: 1px 1px 5px 4px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    1px 1px 5px 4px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         1px 1px 5px 4px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+
+  &:hover {
+      -webkit-box-shadow: 1px 1px 5px 4px #888;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow:    1px 1px 5px 4px #888;  /* Firefox 3.5 - 3.6 */
+    box-shadow:         1px 1px 5px 4px #888;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  }
+}
+
+.bird {
+  &-list {
+    &-item {
+      margin-bottom: 50px;
+
+      & > a {
+        text-align: center;
+        display: block;
+        line-height: 1.5rem;
+        padding-top: 20px;
+
+        &:first-child {
+          padding-top: 100%;
+          width: 100%;
+          position: relative;
+          background-size: cover;
+          background-position: center;
+        }
+      }
+    }
+  }
+
+  &-item {
+    margin-bottom: 50px;
+
+    &-name {
+      margin-bottom: 20px;
+    }
+
+    &-accessory {
+      color: #999;
+    }
+
+    &-date {
+      font-size: 0.8rem;
+      line-height: 2;
+      color: #666;
+    }
+
+    &-colors {
+      & > span {
+        margin-right: 15px;
+      }
+    }
+
+    &-location {
+      margin-bottom: 20px;
+    }
+  }
+}
