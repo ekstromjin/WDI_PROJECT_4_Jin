@@ -28,13 +28,14 @@ class BirdsShow extends React.Component {
         </div>
         <div className="col-md-6">
           <h3 className="bird-item-name">{this.state.bird.name}</h3>
-          <h4 className="bird-item-colors">
+          <h4 className="bird-item-colors mb-3">
             {this.state.bird.color && this.state.bird.color.map(color => {
               return(
                 <span className="badge badge-secondary" key={color}>{color}</span>
               );
             })}
           </h4>
+          <p className="bird-item-info">{this.state.bird.info}</p>
         </div>
       </div>
     );

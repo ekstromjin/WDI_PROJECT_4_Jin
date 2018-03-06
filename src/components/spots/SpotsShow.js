@@ -8,11 +8,20 @@ import Moment from 'react-moment';
 import GoogleMap from '../maps/GoogleMaps'
 import Auth from '../../lib/Auth';
 
+import CommentList from '../utility/CommentList';
+import CommentForm from '../utility/CommentForm';
+
 class SpotsShow extends React.Component {
     state = {
       spot: {},
       likes: 0,
-      isDuplicated: false
+      isDuplicated: false,
+      comments: [],
+      comment: {
+        first_name: '',
+        last_name: '',
+        contents: ''
+      }
     }
 
     handleClickLikes = (e) => {
@@ -42,8 +51,46 @@ class SpotsShow extends React.Component {
       }
     }
 
+    handleChangeCommentFirstname = (e) => {
+      const comment = Object.assign({}, this.state.comment, { first_name: e.target.value });
+      this.setState({ comment });      
+    }
+
+    handleChangeCommentLastname = (e) => {
+      const comment = Object.assign({}, this.state.comment, { last_name: e.target.value });
+      this.setState({ comment });      
+    }  
+      
+    handleChangeCommentContents = (e) => {
+      const comment = Object.assign({}, this.state.comment, { contents: e.target.value });
+      this.setState({ comment });      
+    }        
+
+    handleSubmitCommentForm = (e) => {
+      e.preventDefault();
+
+      var parentObj = this
+      Axios
+        .post(`/api/spots/${this.props.match.params.id}/comments/create`, this.state.comment, {
+          headers: { 'Authorization': `Bearer ${Auth.getToken()}`}
+        })
+        .then(res => {
+          var comment = [res.data]
+          var comments = []
+          comments = [...comment, ...parentObj.state.comments]
+          this.setState({ comments : comments})
+
+          comment = {
+            first_name: '',
+            last_name: '',
+            contents: ''
+          }
+          this.setState({ comment : comment})
+        })
+        .catch(err => console.log(err));
+    }    
+
     componentDidMount() {
-      console.log(this.props.match.params.id);
       Axios
         .get(`/api/spots/${this.props.match.params.id}`)
         .then(res => {
@@ -52,6 +99,13 @@ class SpotsShow extends React.Component {
           this.setState({isDuplicated: false})
         })
         .catch(err => console.log(err));
+
+      Axios
+        .get(`/api/spots/${this.props.match.params.id}/comments`)
+        .then(res => {
+          this.setState({ comments: res.data }, () => console.log(this.state));
+        })
+        .catch(err => console.log(err));        
     }
     render() {
       return (
@@ -83,6 +137,20 @@ class SpotsShow extends React.Component {
             }
             {/* <h3>{this.state.spot.name}</h3>
             <h4>{this.state.spot.location.lat}</h4> */}
+          </div>
+
+          <div className="bird-item-comment-wrapper col-md-12">
+            <h4 className="mb-4 mt-4">Comments</h4>
+            <CommentList 
+              comments={this.state.comments}
+            />
+            <CommentForm 
+              comment={this.state.comment}
+              handleSubmitCommentForm={this.handleSubmitCommentForm}
+              handleChangeCommentFirstname={this.handleChangeCommentFirstname}
+              handleChangeCommentLastname={this.handleChangeCommentLastname}
+              handleChangeCommentContents={this.handleChangeCommentContents}
+            />
           </div>
         </div>
       );

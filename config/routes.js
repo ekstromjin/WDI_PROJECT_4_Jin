@@ -2,6 +2,7 @@ const router = require('express').Router();
 // const birdsController = require('../controllers/birds');
 const birds  = require('../controllers/birds');
 const spots  = require('../controllers/spots');
+const comments  = require('../controllers/comments');
 const auth  = require('../controllers/auth');
 // const secureRoute = require('../lib/secureRoute');
 
@@ -24,6 +25,12 @@ router.route('/spots/:id')
 router.route('/spots')
   .get(spots.index)
   .post(spots.create);
+
+router.route('/spots/:spotId/comments')
+  .get(comments.index);
+
+router.route('/spots/:spotId/comments/create')
+  .post(comments.create);
 
 router.all('/*', (req, res) => res.notFound());
 

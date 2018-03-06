@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const birdSchema = new mongoose.Schema({
   name: { type: String, required: true },
   image: { type: String },
-  color: [{ type: String }]
+  color: [{ type: String }],
+  info: { type: String }
 });
 
 birdSchema.set('toJSON', {
