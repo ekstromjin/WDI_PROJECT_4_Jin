@@ -3,6 +3,7 @@ const router = require('express').Router();
 const birds  = require('../controllers/birds');
 const spots  = require('../controllers/spots');
 const comments  = require('../controllers/comments');
+const users  = require('../controllers/users');
 const auth  = require('../controllers/auth');
 // const secureRoute = require('../lib/secureRoute');
 
@@ -31,6 +32,16 @@ router.route('/spots/:spotId/comments')
 
 router.route('/spots/:spotId/comments/create')
   .post(comments.create);
+
+router.route('/users')
+  .get(users.index);
+
+router.route('/users/:id')
+  .get(users.show);
+
+router.route('/users/:userId/info')
+  .get(users.info);
+
 
 router.all('/*', (req, res) => res.notFound());
 

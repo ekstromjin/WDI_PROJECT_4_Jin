@@ -67,12 +67,6 @@ function SpotsForm({ handleSubmit, handleChange, handleOnLocationChange, handleC
           />
         </div>
 
-        <div className="form-group">
-          <label>Username</label>
-          <br />
-          <input type="text" id="username" name="username" className="form-control" required onChange={handleChangeUsername} placeholder="" />
-        </div>
-
         <div>
           <button className="save-button">Save</button>
         </div>

@@ -273,6 +273,23 @@ main {
   }
 }
 
+.user {
+  &-list {
+    a.rounded {
+      border-radius: 50% !important;
+    }
+  }
+
+  &-show {
+    .page-banner {
+      h4 {
+        padding: 0 10px;
+        margin-bottom: 22px;
+      }
+    }
+  }
+}
+
 
 /* Position and sizing of burger button */
 .bm-burger-button {

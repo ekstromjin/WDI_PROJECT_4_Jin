@@ -28,7 +28,7 @@ function spotsShow(req, res, next) {
   Spot
     .findById(req.params.id)
     .populate('bird')
-    .populate('user', 'username')
+    .populate('user')
     .exec()
     .then((spot) => {
       if(!spot) return res.notFound();

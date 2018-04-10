@@ -11,6 +11,8 @@ import Auth from '../../lib/Auth';
 import CommentList from '../utility/CommentList';
 import CommentForm from '../utility/CommentForm';
 
+import BackButton from '../utility/BackButton';
+
 class SpotsShow extends React.Component {
     state = {
       spot: {},
@@ -21,7 +23,9 @@ class SpotsShow extends React.Component {
         first_name: '',
         last_name: '',
         contents: ''
-      }
+      },
+      user: {},
+      backText: ''
     }
 
     handleClickLikes = (e) => {
@@ -91,6 +95,12 @@ class SpotsShow extends React.Component {
     }    
 
     componentDidMount() {
+
+      if(!Auth.isAuthenticated()) {
+        location.href = '/login'
+        return true;
+      }
+
       Axios
         .get(`/api/spots/${this.props.match.params.id}`)
         .then(res => {
@@ -105,11 +115,26 @@ class SpotsShow extends React.Component {
         .then(res => {
           this.setState({ comments: res.data }, () => console.log(this.state));
         })
-        .catch(err => console.log(err));        
+        .catch(err => console.log(err));    
+
+      if(typeof this.props.match.params.user_id != "undefined") {
+        Axios
+          .get(`/api/users/${this.props.match.params.user_id}/info`)
+          .then(res => {
+            this.setState({ user: res.data }, () => console.log(this.state));
+            this.setState({ backText: "Back to " + res.data.username + "'s spots" }, () => console.log(this.state));
+          })
+          .catch(err => console.log(err));
+      }
     }
     render() {
       return (
         <div className="row bird-item">
+          { this.state.backText != "" && 
+            <div className="page-banner col-md-12">
+              <BackButton history={history} txt={this.state.backText} />
+            </div>
+          }
           <div className="image-tile col-md-6">
             <img src={this.state.spot.image} className="img-responsive rounded shadowed" />
           </div>
@@ -119,7 +144,7 @@ class SpotsShow extends React.Component {
                 <h3 className="bird-item-name">{ this.state.spot.bird.name }</h3>
                 {/*<h5 className="bird-item-byuser">by {this.state.spot.user.username}</h5>*/}
                 <h5 className="bird-item-accessory row m-0 mb-3">
-                  <span className="col-md-12 p-0">by {this.state.spot.username}</span>
+                  <span className="col-md-12 p-0">by {this.state.spot.user.username}</span>
                 </h5>
                 <h5 className="bird-item-accessory row m-0 mb-3">
                   <span className="col-md-12 p-0 bird-item-date"><FontAwesome name='calendar' /> <Moment format="DD/MM/YYYY">{this.state.spot.created_at}</Moment></span>

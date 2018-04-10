@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import BackButton from '../utility/BackButton';
 
 
-// import Auth from '../../lib/Auth';
+import Auth from '../../lib/Auth';
 
 class SpotsIndex extends React.Component {
   state = {
@@ -13,7 +13,11 @@ class SpotsIndex extends React.Component {
   }
 
   componentDidMount() {
-
+    if(!Auth.isAuthenticated()) {
+      location.href = '/login'
+      return true;
+    }
+    
     Axios
       .get('/api/spots')
       // {

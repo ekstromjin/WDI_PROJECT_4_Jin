@@ -10,8 +10,7 @@ class SpotsNew extends React.Component {
       bird: '',
       image: '',
       location: {},
-      likes: [],
-      username: ''
+      likes: []
     },
     errors: {}
   };
@@ -55,6 +54,11 @@ class SpotsNew extends React.Component {
   }
 
   componentDidMount() {
+    if(!Auth.isAuthenticated()) {
+      location.href = '/login'
+      return true;
+    }
+    
     Axios
       .get('/api/birds', {
         headers: { 'Authorization': `Bearer ${Auth.getToken()}`}

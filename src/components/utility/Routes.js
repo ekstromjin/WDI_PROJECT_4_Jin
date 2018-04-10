@@ -9,6 +9,8 @@ import BirdsShow  from  '../birds/BirdsShow';
 import SpotsNew  from  '../spots/SpotsNew';
 import SpotsIndex  from  '../spots/SpotsIndex';
 import SpotsShow  from  '../spots/SpotsShow';
+import UsersIndex  from  '../users/UsersIndex';
+import UsersShow  from  '../users/UsersShow';
 
 
 // import SpotsShow  from  '../birds/SpotsShow';
@@ -25,6 +27,9 @@ const Routes = () => {
       <Route exact path="/spots" component={SpotsIndex} />
       <Route exact path="/spots/new" component={SpotsNew} />
       <Route path="/spots/:id" component={SpotsShow} />
+      <Route exact path="/users" component={UsersIndex} />
+      <Route path="/users/:user_id/spots/:id" component={SpotsShow} />
+      <Route path="/users/:id" component={UsersShow} />
     </Switch>
   );
 };

@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   email: { type: String, required: true, unique: true },
+  photo: { type: String, required: true },
   password: { type: String, required: true }
 });
 
@@ -30,6 +31,15 @@ userSchema.pre('save', function hashPassword(next) {
 userSchema.methods.validatePassword = function validatePassword(password) {
   return bcrypt.compareSync(password, this.password);
 };
+
+userSchema.set('toJSON', {
+  getters: true,
+  virtuals: true,
+  transform(obj, json) {
+    delete json._id;
+    delete json.__v;
+  }
+});
 
 // **************************
 module.exports = mongoose.model('Auth', userSchema);

@@ -11,6 +11,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user }) => {
           onChange={handleChange}
           value={user.username}
           className="form-control"
+          required
         />
       </div>
       <div className="form-group">
@@ -21,6 +22,18 @@ const RegisterForm = ({ handleChange, handleSubmit, user }) => {
           onChange={handleChange}
           value={user.email}
           className="form-control"
+          required
+        />
+      </div>
+      <div className="form-group">
+        <input
+          type="text"
+          name="photo"
+          placeholder="Link of profile picture"
+          onChange={handleChange}
+          value={user.picture}
+          className="form-control"
+          required
         />
       </div>
       <div className="form-group">
@@ -31,6 +44,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user }) => {
           onChange={handleChange}
           value={user.password}
           className="form-control"
+          required
         />
       </div>
       <div className="form-group">
@@ -41,6 +55,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user }) => {
           onChange={handleChange}
           value={user.passwordConfirmation}
           className="form-control"
+          required
         />
       </div>
 

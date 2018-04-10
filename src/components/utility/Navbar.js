@@ -31,6 +31,7 @@ const Navbar = ({ history }) => {
         { Auth.isAuthenticated() && <a href="#" id="tm-logout" className="standard-button" onClick={logout}>Logout</a>}
         { Auth.isAuthenticated() && <Link to="/spots" id="tm-spots" className="standard-button">Spots</Link>}
         { Auth.isAuthenticated() && <Link to="/" id="tm-birds" className="standard-button">Birds</Link>}
+        { Auth.isAuthenticated() && <Link to="/users" id="tm-users" className="standard-button">Users</Link>}
       </nav>
       <Menu isOpen={state.isOpen}>
         { !Auth.isAuthenticated() && <li><Link to="/login" id="tm-login" className="standard-button" onClick={menuToggle}>Login</Link></li>}
@@ -38,6 +39,7 @@ const Navbar = ({ history }) => {
         { Auth.isAuthenticated() && <li><a href="#" id="tm-logout" className="standard-button" onClick={logout}>Logout</a></li>}
         { Auth.isAuthenticated() && <li><Link to="/spots" id="tm-spots" className="standard-button" onClick={menuToggle}>Spots</Link></li>}
         { Auth.isAuthenticated() && <li><Link to="/" id="tm-birds" className="standard-button" onClick={menuToggle}>Birds</Link></li>}
+        { Auth.isAuthenticated() && <li><Link to="/users" id="tm-users" className="standard-button" onClick={menuToggle}>Users</Link></li>}
       </Menu>     
     </div> 
   );
